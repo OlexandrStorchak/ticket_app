@@ -4,7 +4,7 @@ module Services
   module Tickets
     class Create
       def initialize(params = {})
-        @params = params.deep_transform_keys(&:underscore)
+        @params = params.to_h.deep_transform_keys(&:underscore)
       end
 
       def call
@@ -24,7 +24,6 @@ module Services
                      additional_service_area_codes:,
                      well_known_text:,
                      excavator_attributes:)
-              .permit!
       end
 
       def response_due_date_time
@@ -44,7 +43,7 @@ module Services
       end
 
       def excavator_attributes
-        excavator_data.slice(:company_name, :crew_onsite).merge(address:).permit!
+        excavator_data.slice(:company_name, :crew_onsite).merge(address:)
       end
 
       def address

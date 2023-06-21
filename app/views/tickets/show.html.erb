@@ -1,0 +1,22 @@
+<h1>Ticket Details</h1>
+
+ <div class="back-button">
+  <%= link_to "Back", tickets_path, class: "back-link" %>
+</div>
+
+<div class="ticket-details">
+  <div class="ticket-data">
+    <label>ID: <%= @ticket.id %></label><br>
+    <label>Request Number: <%= @ticket.request_number %></label><br>
+    <label>Sequence Number: <%= @ticket.sequence_number %></label><br>
+    <label>Request Type: <%= @ticket.request_type %></label><br>
+    <label>Request Action: <%= @ticket.request_action %></label><br>
+    <label>Response Due Date Time: <%= @ticket.response_due_date_time %></label><br>
+    <label>Primary Service Area Code: <%= @ticket.primary_service_area_code %></label><br>
+    <label>Excavator Company Name: <%= @ticket.excavator.company_name %></label><br>
+    <label>Excavator Address: <%= @ticket.excavator.address %></label><br>
+    <label>Excavator Crew Onsite: <%= @ticket.excavator.crew_onsite %></label><br>
+  </div>
+
+  <%= area_map [{geometry: {type: "Polygon", coordinates: [ @coordinates ] }}] %>
+</div>

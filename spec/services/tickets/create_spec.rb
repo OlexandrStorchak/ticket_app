@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Services::Tickets::Create do
   describe '#call' do
     context 'create Ticket' do
-      subject { described_class.new(params) }
+      subject { described_class.new(params.permit!) }
       let(:tickets) { Ticket.all }
       let(:params) do
         ActionController::Parameters.new(

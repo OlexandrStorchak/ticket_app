@@ -5,7 +5,7 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def create
-      ticket = Services::Tickets::Create.new(params).call
+      ticket = Services::Tickets::Create.new(params.permit!).call
       return unprocessable_entity!(ticket.errors) unless ticket.valid?
 
       render json: { message: 'Ticket created successfully' }, status: :created

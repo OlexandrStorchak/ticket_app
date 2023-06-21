@@ -1,0 +1,26 @@
+<div class="tickets">
+  <h1>Tickets</h1>
+
+  <ul class="ticket-list">
+    <% @tickets.each do |ticket| %>
+      <a href="<%= ticket_path(ticket) %>">
+        <li class="ticket">
+          <label>ID:</label> <%= ticket.id %><br>
+          <label>Request Number:</label> <%= ticket.request_number %><br>
+          <label>Sequence Number:</label> <%= ticket.sequence_number %><br>
+          <label>Request Type:</label> <%= ticket.request_type %><br>
+          <label>Request Action:</label> <%= ticket.request_action %><br>
+          <label>Response Due Date Time:</label> <%= ticket.response_due_date_time %><br>
+          <label>Primary Service Area Code:</label> <%= ticket.primary_service_area_code %><br>
+          <label>Excavator Company Name:</label> <%= ticket.excavator.company_name %><br>
+          <label>Excavator Address:</label> <%= ticket.excavator.address %><br>
+          <label>Excavator Crew Onsite:</label> <%= ticket.excavator.crew_onsite %><br>
+        </li>
+      </a>
+    <% end %>
+  </ul>
+
+  <div class="pagination">
+    <%= paginate @tickets %>
+  </div>
+</div>
